@@ -10,7 +10,7 @@ import { CoursesService } from './../services/courses.service';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent {
-  courses: Observable <Course[]>;
+  courses$: Observable <Course[]>;
   displayedColumns = ['name', 'category'];
 
 
@@ -18,6 +18,6 @@ export class CoursesComponent {
   constructor(private coursesService: CoursesService){
     // this.courses = [];
     // this.coursesService = new CoursesService();
-    this.courses = this.coursesService.list().pipe(tap(courses => console.log(courses)));
+    this.courses$ = this.coursesService.list().pipe(tap(courses => console.log(courses)));
   }
 }
