@@ -1,6 +1,8 @@
-import { CoursesService } from './../services/courses.service';
 import { Component } from '@angular/core';
+import { Observable, tap } from 'rxjs';
+
 import { Course } from '../model/courses';
+import { CoursesService } from './../services/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -8,7 +10,7 @@ import { Course } from '../model/courses';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent {
-  courses: Course[] = [];
+  courses: Observable <Course[]>;
   displayedColumns = ['name', 'category'];
 
 
@@ -16,6 +18,6 @@ export class CoursesComponent {
   constructor(private coursesService: CoursesService){
     // this.courses = [];
     // this.coursesService = new CoursesService();
-    this.courses = this.coursesService.list();
+    this.courses = this.coursesService.list().pipe(tap(courses => console.log(courses)));
   }
 }
