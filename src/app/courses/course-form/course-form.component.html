@@ -7,7 +7,7 @@
     </mat-toolbar>
 
 
-    <form [formGroup]="form"> <!-- linkando com o form do course-form.components.ts -->
+    <form [formGroup]="form"  class="min-width"> <!-- linkando com o form do course-form.components.ts -->
       <mat-form-field class="full-wigth">
         <input matInput placeholder="Nome" formControlName="name">
       </mat-form-field>
@@ -17,8 +17,8 @@
         <mat-label>Categoria</mat-label>
         <mat-select formControlName="category">
           <mat-option value="null"></mat-option>
-          <mat-option value="Front-End">Front-end</mat-option>
-          <mat-option value="Back-End">Back-end</mat-option>
+          <mat-option value="front-end">front-end</mat-option>
+          <mat-option value="back-end">back-end</mat-option>
         </mat-select>
       </mat-form-field>
 
