@@ -4,6 +4,8 @@ import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CoursesService } from '../../services/courses.service';
+import { ActivatedRoute } from '@angular/router';
+import { Course } from '../../model/courses';
 
 @Component({
   selector: 'app-course-form',
@@ -13,6 +15,7 @@ import { CoursesService } from '../../services/courses.service';
 export class CourseFormComponent {
 
   form = this.formBuilder.group({
+    _id: [''],
     name: [''],
     category: ['']
   });
@@ -20,8 +23,16 @@ export class CourseFormComponent {
   constructor(private formBuilder: NonNullableFormBuilder, // faz com que os campos não possam ser nulos.
     private service: CoursesService,
     private snackBar: MatSnackBar,
-    private location: Location){
+    private location: Location,
+    private route: ActivatedRoute){
     // this.form
+
+    const course: Course = this.route.snapshot.data['course'];
+    this.form.setValue({
+      _id: course._id,
+      name: course.name,
+      category: course.category
+    });
   }
 
   onSubmit(){
