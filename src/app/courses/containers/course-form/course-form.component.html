@@ -20,8 +20,8 @@
       <mat-form-field class="full-wigth">
         <mat-label>Categoria</mat-label>
         <mat-select formControlName="category">
-          <mat-option value="front-end">front-end</mat-option>
-          <mat-option value="back-end">back-end</mat-option>
+          <mat-option value="Front-end">Front-end</mat-option>
+          <mat-option value="Back-end">Back-end</mat-option>
         </mat-select>
         <mat-error *ngIf="form.get('category')?.invalid">{{ getErrorMessage('category') }}</mat-error>
       </mat-form-field>
